@@ -25,4 +25,6 @@ public class TransactionRequest {
     @NotNull(message = "Amount cannot be null")
     @Positive(message = "Amount must be positive")
     private BigDecimal amount;
+
+    private String referenceNumber;
 }

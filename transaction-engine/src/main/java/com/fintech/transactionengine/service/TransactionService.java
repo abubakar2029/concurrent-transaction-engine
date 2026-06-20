@@ -21,7 +21,7 @@ public class TransactionService {
     private final TransactionRepository transactionRepository;
 
     @Transactional
-    public Transaction executeTransfer(TransactionRequest request) {
+    public Transaction transferMoney(TransactionRequest request) {
         Account sender = accountRepository.findByAccountNumber(request.getSenderAccountNumber())
                 .orElseThrow(() -> new IllegalArgumentException("Sender account not found: " + request.getSenderAccountNumber()));
 
@@ -43,7 +43,7 @@ public class TransactionService {
 
         // Save transaction record with status SUCCESS
         Transaction transaction = Transaction.builder()
-                .referenceNumber(UUID.randomUUID().toString())
+                .referenceNumber(request.getReferenceNumber() != null ? request.getReferenceNumber() : UUID.randomUUID().toString())
                 .senderAccountNumber(sender.getAccountNumber())
                 .receiverAccountNumber(receiver.getAccountNumber())
                 .amount(amount)
