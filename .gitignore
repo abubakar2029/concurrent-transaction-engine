@@ -1,0 +1,20 @@
+# Maven
+**/target/
+**/.mvn/wrapper/maven-wrapper.jar
+**/mvnw
+**/mvnw.cmd
+
+# IDEs
+**/.idea/
+**/*.iml
+**/*.iws
+**/*.ipr
+**/.settings/
+**/.classpath
+**/.project
+**/.factorypath
+**/.vscode/
+
+# Local OS
+Thumbs.db
+.DS_Store
