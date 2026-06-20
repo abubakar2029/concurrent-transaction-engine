@@ -244,8 +244,8 @@ class TransactionEngineApplicationTests {
                 .amount(new BigDecimal("100.00"))
                 .build();
 
-        transactionQueue.putRequest(request);
-        TransactionRequest retrieved = transactionQueue.takeRequest();
+        transactionQueue.enqueue(request);
+        TransactionRequest retrieved = transactionQueue.dequeue();
 
         assertThat(retrieved).isNotNull();
         assertThat(retrieved.getSenderAccountNumber()).isEqualTo("SENDER1");
@@ -280,7 +280,7 @@ class TransactionEngineApplicationTests {
                 .amount(new BigDecimal("100.00"))
                 .build();
 
-        transactionQueue.putRequest(request);
+        transactionQueue.enqueue(request);
 
         // Wait for background worker processing
         Thread.sleep(1500);

@@ -24,7 +24,7 @@ public class TransactionController {
     public ResponseEntity<TransferResponse> executeTransfer(@Valid @RequestBody TransactionRequest request) throws InterruptedException {
         String referenceId = UUID.randomUUID().toString();
         request.setReferenceNumber(referenceId);
-        transactionQueue.putRequest(request);
+        transactionQueue.enqueue(request);
         
         TransferResponse response = TransferResponse.builder()
                 .message("Transaction is being processed. Reference ID: " + referenceId)

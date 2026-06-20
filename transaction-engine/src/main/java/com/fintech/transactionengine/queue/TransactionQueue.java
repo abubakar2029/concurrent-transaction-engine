@@ -11,11 +11,11 @@ public class TransactionQueue {
 
     private final BlockingQueue<TransactionRequest> queue = new LinkedBlockingQueue<>();
 
-    public void putRequest(TransactionRequest request) throws InterruptedException {
+    public void enqueue(TransactionRequest request) throws InterruptedException {
         queue.put(request);
     }
 
-    public TransactionRequest takeRequest() throws InterruptedException {
+    public TransactionRequest dequeue() throws InterruptedException {
         return queue.take();
     }
 }

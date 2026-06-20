@@ -20,7 +20,7 @@ public class TransactionWorker implements Runnable {
         log.info("Transaction worker started on thread: {}", Thread.currentThread().getName());
         while (!Thread.currentThread().isInterrupted()) {
             try {
-                TransactionRequest request = transactionQueue.takeRequest();
+                TransactionRequest request = transactionQueue.dequeue();
                 log.debug("Worker picked up transaction request from sender: {} to receiver: {}", 
                         request.getSenderAccountNumber(), request.getReceiverAccountNumber());
                 try {
